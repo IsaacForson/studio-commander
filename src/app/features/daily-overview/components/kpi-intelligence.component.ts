@@ -9,7 +9,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let d = data();
-    <div class="rounded-2xl overflow-hidden border border-amber-300 border-l-4 border-l-amber-500">
+    <div class="rounded-2xl overflow-hidden border-2 border-amber-400">
       <!-- Amber header bar -->
       <div class="bg-amber-500 text-white px-5 py-3 flex items-center gap-2">
         <span>✦</span>
@@ -53,6 +53,27 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
               </svg>
             </div>
           </button>
+          @if (openAccordion() === 'revenue') {
+            <div class="px-4 pb-4 border-t border-base-300">
+              <p class="text-sm text-base-content/70 leading-relaxed mt-3 mb-3">
+                Monthly recurring revenue is currently $14.8k against an RRR target of $18k. The gap is primarily driven by 34 expired member packages that have not been renewed, representing $5,100 in recoverable billing.
+              </p>
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Current MRR</p>
+                  <p class="text-xl font-bold text-base-content">$14.8k</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Target MRR</p>
+                  <p class="text-xl font-bold text-base-content">$18k</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Gap</p>
+                  <p class="text-xl font-bold text-red-600">-$3.2k</p>
+                </div>
+              </div>
+            </div>
+          }
         </div>
 
         <!-- DVA Score accordion -->
@@ -70,10 +91,31 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
               </svg>
             </div>
           </button>
+          @if (openAccordion() === 'dva') {
+            <div class="px-4 pb-4 border-t border-base-300">
+              <p class="text-sm text-base-content/70 leading-relaxed mt-3 mb-3">
+                DVA (Drop vs Add) Score measures student retention health. 12 students dropped this month while only 3 new students joined, creating a net loss of 9 members. The critical threshold is 75%.
+              </p>
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Dropped</p>
+                  <p class="text-xl font-bold text-red-600">12</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Added</p>
+                  <p class="text-xl font-bold text-green-600">3</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-3">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Net Change</p>
+                  <p class="text-xl font-bold text-red-600">-9</p>
+                </div>
+              </div>
+            </div>
+          }
         </div>
 
         <!-- Expired Packages accordion (default open) -->
-        <div class="border border-amber-300 border-l-4 border-l-amber-500 rounded-xl mb-4 overflow-hidden" [class.border-base-300]="openAccordion() !== 'expired'" [class.border-l-0]="openAccordion() !== 'expired'">
+        <div class="border border-base-300 rounded-xl mb-4 overflow-hidden">
           <button
             class="w-full flex items-center justify-between px-4 py-3 hover:bg-base-200/50 transition-colors"
             (click)="toggleAccordion('expired')"

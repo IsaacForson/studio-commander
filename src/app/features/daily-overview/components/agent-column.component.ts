@@ -11,7 +11,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
     @let a = agent();
     <div
       class="rounded-2xl p-5 bg-base-100 border-2"
-      [class]="a.agentRole === 'operations' ? 'border-amber-400 border-l-4 border-l-amber-500' : 'border-teal-300 border-l-4 border-l-teal-500'"
+      [class]="a.agentRole === 'operations' ? 'border-amber-400' : 'border-teal-400'"
     >
       <!-- Header -->
       <div class="flex items-center justify-between mb-4">
@@ -51,8 +51,8 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
           <div class="space-y-3">
             @for (task of section.tasks; track task.title) {
               <div
-                class="bg-base-100 border border-base-300 rounded-xl p-4 border-l-4"
-                [class]="task.statusVariant === 'error' ? 'border-l-red-500' : task.statusVariant === 'warning' ? 'border-l-amber-500' : task.status === 'completed' ? 'border-l-base-300' : task.hasAiIcon ? 'border-l-base-300' : 'border-l-base-300'"
+                class="bg-base-100 rounded-xl p-4 border-2"
+                [class]="task.statusVariant === 'error' ? 'border-red-400' : task.statusVariant === 'warning' ? 'border-amber-400' : 'border-base-300'"
               >
                 <div class="flex items-start gap-2.5">
                   @if (task.status === 'completed') {

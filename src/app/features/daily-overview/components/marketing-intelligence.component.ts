@@ -8,7 +8,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   imports: [ActionButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="rounded-2xl overflow-hidden border border-teal-300 border-l-4 border-l-teal-500">
+    <div class="rounded-2xl overflow-hidden border-2 border-teal-400">
       <!-- Teal header bar -->
       <div class="bg-teal-600 text-white px-5 py-3 flex items-center gap-2">
         <span>✦</span>
@@ -108,6 +108,30 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
               </svg>
             </div>
           </button>
+          @if (openAccordion() === 'trial') {
+            <div class="px-4 pb-4 border-t border-base-300">
+              <p class="text-xs text-base-content/60 my-3 leading-relaxed">Free trial class campaign targeting new leads in the Santa Monica area through Instagram ads and Google local search. Walk-ins and online bookings are tracked automatically.</p>
+              <div class="grid grid-cols-4 gap-2 mb-4">
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Leads</p>
+                  <p class="text-base font-bold text-base-content">6</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Booked</p>
+                  <p class="text-base font-bold text-base-content">4</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Show Rate</p>
+                  <p class="text-base font-bold text-base-content">75%</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Cost/Lead</p>
+                  <p class="text-base font-bold text-base-content">$12</p>
+                </div>
+              </div>
+              <app-action-button label="View Campaign Details" variant="primary" />
+            </div>
+          }
         </div>
 
         <!-- Parent Referral Program accordion -->
@@ -125,6 +149,25 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
               </svg>
             </div>
           </button>
+          @if (openAccordion() === 'referral') {
+            <div class="px-4 pb-4 border-t border-base-300">
+              <p class="text-xs text-base-content/60 my-3 leading-relaxed">Referral program announcement goes out to all 187 active members tomorrow at 09:00AM. Each successful referral that results in enrollment earns a $50 studio credit for the referring member.</p>
+              <div class="grid grid-cols-3 gap-2 mb-4">
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Target Audience</p>
+                  <p class="text-base font-bold text-base-content">187</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Reward</p>
+                  <p class="text-base font-bold text-base-content">$50</p>
+                </div>
+                <div class="border border-base-300 rounded-lg p-2.5">
+                  <p class="text-[10px] text-base-content/50 mb-0.5">Launch</p>
+                  <p class="text-base font-bold text-base-content">Tomorrow</p>
+                </div>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </div>
