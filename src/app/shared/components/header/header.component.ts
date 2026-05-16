@@ -26,7 +26,7 @@ import { ThemeService } from '../../../core/services/theme.service';
           <input
             type="text"
             placeholder="Ask anything..."
-            class="input h-11 w-full rounded-full border-base-300 bg-white pl-10 pr-11 text-sm shadow-none"
+            class="input h-11 w-full rounded-full border-base-300 bg-base-200 pl-10 pr-11 text-sm text-base-content shadow-none placeholder:text-base-content/40"
           />
           <button
             type="button"

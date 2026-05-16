@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nav
-      class="flex w-full items-center rounded-2xl border border-base-300/60 bg-white p-1.5 shadow-figma-drop"
+      class="bg-surface-elevated flex w-full items-center rounded-2xl border border-base-300/60 p-1.5 shadow-figma-drop"
     >
       <div class="flex items-center gap-[10px]">
       <a

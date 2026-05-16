@@ -30,7 +30,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
         </div>
 
         <!-- Summary with warning bg -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5 flex gap-3">
+        <div class="bg-alert-summary border rounded-xl p-4 mb-5 flex gap-3">
           <span class="text-3xl shrink-0">⚠️</span>
           <p class="text-sm text-base-content leading-relaxed">{{ d.summary }}</p>
         </div>

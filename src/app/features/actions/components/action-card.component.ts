@@ -13,10 +13,9 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   @let isCritical = a.priority === 'critical';
     <div
       class="rounded-xl border p-4 shadow-figma-drop"
-      [class.border-[#A40000]]="isCritical"
-      [class.bg-[#FFFDFD]]="isCritical"
-      [class.border-[#CDCDCD]]="!isCritical"
-      [class.bg-[#F8F8F8]]="!isCritical"
+      [class.bg-action-critical]="isCritical"
+      [class.border-surface]="!isCritical"
+      [class.bg-surface-card]="!isCritical"
     >
       <div class="flex gap-4">
         <!-- Agent avatar -->
@@ -37,9 +36,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
             </div>
             <div class="flex shrink-0 items-center gap-2">
               @if (isCritical) {
-                <span
-                  class="rounded-full bg-[#FEE2E2] px-2.5 py-0.5 text-xs font-semibold text-[#A40000]"
-                >
+                <span class="badge-critical rounded-full px-2.5 py-0.5 text-xs font-semibold">
                   Critical
                 </span>
               }

@@ -4,10 +4,10 @@ import { ActionSortDirection } from '../../core/models';
 import { ActionCardComponent } from './components/action-card.component';
 
 const toolbarBtnClass =
-  'inline-flex h-[43px] items-center gap-2 rounded-lg border border-[#B6B6B6] bg-transparent px-4 text-sm font-medium text-base-content transition-colors hover:bg-black/5';
+  'border-toolbar inline-flex h-[43px] items-center gap-2 rounded-lg border bg-transparent px-4 text-sm font-medium text-base-content transition-colors hover:bg-base-content/5';
 
 const toolbarSelectClass =
-  'h-[43px] w-full appearance-none rounded-lg border border-[#B6B6B6] bg-transparent pl-4 pr-10 text-sm font-medium text-base-content outline-none';
+  'border-toolbar h-[43px] w-full appearance-none rounded-lg border bg-transparent pl-4 pr-10 text-sm font-medium text-base-content outline-none';
 
 @Component({
   selector: 'app-actions',
@@ -15,7 +15,9 @@ const toolbarSelectClass =
   imports: [ActionCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="rounded-2xl border border-base-300/60 bg-white px-5 pb-40 pt-5 shadow-figma-drop lg:px-6 lg:pb-44 lg:pt-6">
+    <div
+      class="bg-surface-elevated rounded-2xl border border-base-300/60 px-5 pb-40 pt-5 shadow-figma-drop lg:px-6 lg:pb-44 lg:pt-6"
+    >
       <!-- Toolbar -->
       <div class="mb-6 flex flex-wrap items-center gap-3">
         <button type="button" [class]="toolbarBtnClass" (click)="filtersVisible.set(!filtersVisible())">

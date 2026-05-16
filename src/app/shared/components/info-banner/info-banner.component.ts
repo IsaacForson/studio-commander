@@ -7,11 +7,11 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
   template: `
     <div class="w-full px-6 pt-8 lg:px-10">
       <div
-        class="flex w-full justify-center rounded-xl border border-[#CDCDCD] bg-[#EEEEEE] px-6 py-5 lg:px-10"
+        class="bg-info-banner border-surface flex w-full justify-center rounded-xl border px-6 py-5 lg:px-10"
       >
         <div class="flex max-w-4xl items-start gap-2">
           <svg
-            class="mt-0.5 h-5 w-5 shrink-0 text-[#666666]"
+            class="mt-0.5 h-5 w-5 shrink-0 text-base-content/60"
             viewBox="0 0 20 20"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
               clip-rule="evenodd"
             />
           </svg>
-          <p class="text-center text-sm leading-relaxed text-[#4D4D4D]">
+          <p class="text-center text-sm leading-relaxed text-base-content/80">
             {{ message() }}
           </p>
         </div>
