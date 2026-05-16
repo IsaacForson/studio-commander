@@ -7,7 +7,7 @@ import { ThemeService } from '../../../core/services/theme.service';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <header class="navbar border-b border-base-300 bg-white px-6 py-3 lg:px-10">
+    <header class="navbar border-b border-base-300/60 bg-white px-6 py-3 shadow-figma-drop lg:px-10">
       <!-- Left: Studio info -->
       <div class="flex-none">
         <div>

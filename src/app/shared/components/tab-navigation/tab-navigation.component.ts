@@ -8,9 +8,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nav
-      class="flex w-full items-center rounded-2xl border border-base-300/60 bg-white p-1.5 shadow-sm"
+      class="flex w-full items-center rounded-2xl border border-base-300/60 bg-white p-1.5 shadow-figma-drop"
     >
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-[10px]">
       <a
         routerLink="/daily-overview"
         routerLinkActive="!bg-navy !text-white"
