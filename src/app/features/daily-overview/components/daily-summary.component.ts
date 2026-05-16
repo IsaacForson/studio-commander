@@ -8,62 +8,107 @@ import { DailySummary } from '../../../core/models';
   template: `
     @let s = summary();
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <!-- Win Box - Dark green -->
-      <div class="bg-green-900 text-white rounded-2xl p-6 flex items-center gap-4">
-        <span class="text-4xl shrink-0">🏆</span>
+      <!-- Win - Overnight -->
+      <div
+        class="rounded-2xl p-5 flex items-center gap-4 text-white border-2 border-[#18631D]"
+        style="background: linear-gradient(90deg, #1A291B 0%, #18631D 100%)"
+      >
+        <!-- Trophy -->
+        <div class="shrink-0 w-14 h-14 flex items-center justify-center">
+          <svg viewBox="0 0 48 48" class="w-12 h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16 6h16v4c0 4.5 2.8 8.4 7 9.8V22H25v14h-2v-14h-6v-2.2c4.2-1.4 7-5.3 7-9.8V6z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path d="M12 22h24v2H12v-2z" stroke="white" stroke-width="2" />
+            <path d="M14 28h6v4h-2v-2h-2v-2zM28 28h6v4h-2v-2h-2v-2z" stroke="white" stroke-width="2" />
+            <circle cx="24" cy="14" r="3" stroke="white" stroke-width="1.5" fill="none" />
+          </svg>
+        </div>
+
+        <!-- Title + description -->
         <div class="flex-1 min-w-0">
-          <h4 class="text-green-300 font-semibold text-sm mb-1">{{ s.winTitle }}</h4>
-          <p class="text-sm text-white/80 leading-relaxed">{{ s.winDescription }}</p>
-          <p class="text-xs text-green-400 mt-2 flex items-center gap-1">
-            <span>▲</span> $290 over last month
+          <h4 class="font-semibold leading-tight mb-2" style="color: #AAFF85; font-size: 24px">
+            {{ s.winTitle }}
+          </h4>
+          <p class="leading-snug text-white/90" style="font-size: 16px">
+            {{ s.winDescription }}
           </p>
         </div>
-        <span class="text-4xl font-bold text-white shrink-0">{{ s.winAmount }}</span>
+
+        <!-- Amount + trend (stacked) -->
+        <div class="shrink-0 flex flex-col items-end">
+          <span class="text-4xl font-bold leading-none" style="color: #AAFF85">{{ s.winAmount }}</span>
+          <div
+            class="mt-2 flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-white"
+            style="background: #2d6a32"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            $290 over last month
+          </div>
+        </div>
       </div>
 
-      <!-- Health Score + Network Top Studios combined -->
-      <div class="flex gap-0 rounded-2xl overflow-hidden">
-        <!-- Health Score - Blue/navy gradient -->
-        <div class="bg-gradient-to-br from-indigo-900 to-blue-900 text-white flex-1 p-6 flex items-center gap-5">
-          <div class="relative w-20 h-20 shrink-0">
+      <!-- Studio Health Score + Network Top Studios -->
+      <div
+        class="rounded-2xl overflow-hidden flex border-2 border-indigo-900"
+        style="background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)"
+      >
+        <div class="flex-1 p-5 flex items-center gap-4 text-white">
+          <!-- Gauge -->
+          <div class="relative w-[72px] h-[72px] shrink-0">
             <svg viewBox="0 0 36 36" class="w-full h-full -rotate-90">
               <path
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 fill="none"
-                stroke="white"
-                stroke-opacity="0.15"
+                stroke="rgba(255,255,255,0.15)"
                 stroke-width="3"
               />
               <path
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 fill="none"
-                stroke="#f59e0b"
+                stroke="#fbbf24"
                 stroke-width="3"
                 [attr.stroke-dasharray]="s.healthScore + ', 100'"
                 stroke-linecap="round"
               />
             </svg>
-            <span class="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white">
+            <span class="absolute inset-0 flex items-center justify-center text-2xl font-bold text-amber-400">
               {{ s.healthScore }}
             </span>
           </div>
-          <div>
-            <h4 class="font-bold text-base mb-2">Studio Health Score</h4>
-            <p class="text-xs flex items-center gap-1.5 mb-1">
-              <span>🔥</span> {{ s.healthStreak }}
+
+          <div class="min-w-0">
+            <h4 class="font-bold text-lg text-amber-400 mb-2">Studio Health Score</h4>
+            <p class="text-sm flex items-center gap-2 mb-1.5 text-white/90">
+              <span class="text-base">🔥</span>
+              {{ s.healthStreak }}
             </p>
-            <p class="text-xs flex items-center gap-1.5 text-green-400">
-              <span class="w-3 h-3 rounded bg-green-500 flex items-center justify-center text-white text-[8px]">▲</span>
+            <p class="text-sm flex items-center gap-2 text-green-400">
+              <span
+                class="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-green-500 text-[10px] text-white"
+              >▲</span>
               {{ s.healthChange }}
             </p>
           </div>
         </div>
 
-        <!-- Network Top Studios - Dark purple -->
-        <div class="bg-purple-950 text-white px-6 py-5 flex flex-col items-center justify-center min-w-[160px]">
-          <p class="text-[10px] uppercase tracking-wider opacity-60 mb-1">Network Top Studios</p>
+        <!-- Network Top Studios inset -->
+        <div
+          class="m-3 ml-0 flex min-w-[140px] flex-col items-center justify-center rounded-xl border border-white/30 px-4 py-4 text-center text-white"
+          style="background: rgba(0, 0, 0, 0.2)"
+        >
+          <p class="text-xs text-purple-200/80 mb-1">Network Top Studios</p>
           <span class="text-5xl font-bold leading-none">{{ s.retentionScore }}</span>
-          <p class="text-xs text-yellow-400 mt-2">Your gap: 14 pts</p>
+          <p class="text-sm mt-2 font-medium text-pink-400">Your gap: 14 pts</p>
         </div>
       </div>
     </div>

@@ -20,7 +20,8 @@ export class MockDataService {
   getDailySummary(): DailySummary {
     return {
       winTitle: 'Win - Overnight',
-      winDescription: 'Google engagement came up to 3 members rejoining late last night. Two more passed this morning.',
+      winDescription:
+        "Sera's re-engagement campaign has 3 members responding since last night. Two more opened messages this morning.",
       winAmount: '+$840',
       healthScore: 74,
       healthStreak: '14-day healthy streak',
