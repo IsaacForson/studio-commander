@@ -94,6 +94,8 @@ import { ThemeService } from '../../../core/services/theme.service';
           }
         </button>
 
+        <div class="mx-1 h-6 w-px bg-base-300" aria-hidden="true"></div>
+
         <div class="avatar ml-1">
           <div class="h-9 w-9 overflow-hidden rounded-full ring-2 ring-base-300">
             <img
