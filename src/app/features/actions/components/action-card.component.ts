@@ -16,7 +16,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
       [class.border-[#A40000]]="isCritical"
       [class.bg-[#FFFDFD]]="isCritical"
       [class.border-[#CDCDCD]]="!isCritical"
-      [class.bg-base-100]="!isCritical"
+      [class.bg-[#F8F8F8]]="!isCritical"
     >
       <div class="flex gap-4">
         <!-- Agent avatar -->
