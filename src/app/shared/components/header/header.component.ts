@@ -6,8 +6,11 @@ import { ThemeService } from '../../../core/services/theme.service';
   selector: 'app-header',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'sticky top-0 z-50 block bg-base-100',
+  },
   template: `
-    <header class="navbar border-b border-base-300/60 bg-white px-6 py-3 shadow-figma-drop lg:px-10">
+    <header class="navbar border-b border-base-300/60 bg-base-100 px-6 py-3 shadow-figma-drop lg:px-10">
       <!-- Left: Studio info -->
       <div class="flex-none">
         <div>
@@ -103,13 +106,6 @@ import { ThemeService } from '../../../core/services/theme.service';
       </div>
     </header>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
 })
 export class HeaderComponent {
   private readonly mockData = inject(MockDataService);
