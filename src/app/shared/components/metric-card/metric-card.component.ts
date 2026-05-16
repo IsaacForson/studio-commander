@@ -28,35 +28,34 @@ const CTA_VARIANT_MAP: Record<MetricStatus, 'danger' | 'warning' | 'primary'> = 
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <button type="button" [class]="cardClasses()" (click)="select.emit(metric().id)">
-      <h3 class="mb-2 text-center text-sm font-semibold text-base-content">{{ metric().title }}</h3>
+      <h3 class="shrink-0 text-center text-sm font-semibold text-base-content">{{ metric().title }}</h3>
 
-      <div class="flex flex-1 items-center justify-center">
+      <div class="flex min-h-0 flex-1 items-center justify-center py-2">
         <app-gauge-chart
           [value]="metric().value"
           [maxValue]="metric().maxValue"
           [status]="metric().status"
           [displayValue]="metric().displayValue"
-          class="w-full max-w-[160px]"
+          class="w-full max-w-[168px]"
         />
       </div>
 
-      <span class="mx-auto mt-2 inline-block rounded-full px-3 py-1 text-center text-xs font-medium" [class]="pillClass()">
-        {{ metric().description }}
-      </span>
+      <div class="mt-auto flex w-full flex-col items-center gap-2 pt-1">
+        <span class="inline-block rounded-full px-3 py-1 text-center text-xs font-medium" [class]="pillClass()">
+          {{ metric().description }}
+        </span>
 
-      @if (metric().ctaLabel) {
-        <div class="mt-3 flex justify-center">
+        @if (metric().ctaLabel) {
           <app-action-button [label]="metric().ctaLabel!" [variant]="ctaVariant()" />
-        </div>
-      } @else {
-        <div class="mt-3 h-10"></div>
-      }
+        }
+      </div>
     </button>
   `,
   styles: [
     `
       :host {
-        display: block;
+        display: flex;
+        min-height: 300px;
         height: 100%;
       }
     `,
@@ -70,9 +69,9 @@ export class MetricCardComponent {
   readonly cardClasses = computed(() => {
     const m = this.metric();
     const classes = [
-      'flex h-full min-h-[280px] w-full flex-col rounded-xl border-2 p-4 text-left shadow-figma-drop transition-shadow hover:shadow-md',
+      'flex h-full w-full flex-col rounded-xl border-2 p-4 text-left shadow-figma-drop transition-shadow hover:shadow-md',
       BORDER_MAP[m.status],
-      m.status === 'critical' ? 'bg-metric-critical' : 'bg-surface-card',
+      'bg-surface-card',
     ];
     if (this.selected()) {
       classes.push('ring-2 ring-primary/40 ring-offset-2 ring-offset-base-200');

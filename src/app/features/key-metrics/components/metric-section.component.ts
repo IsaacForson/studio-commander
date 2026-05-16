@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, input, signal, inject, computed } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { MetricSection } from '../../../core/models';
 import { MetricCardComponent } from '../../../shared/components/metric-card/metric-card.component';
 import { TrendChartComponent } from './trend-chart.component';
@@ -7,7 +8,7 @@ import { MockDataService } from '../../../core/services/mock-data.service';
 @Component({
   selector: 'app-metric-section',
   standalone: true,
-  imports: [MetricCardComponent, TrendChartComponent],
+  imports: [NgClass, MetricCardComponent, TrendChartComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let s = section();
@@ -24,7 +25,7 @@ import { MockDataService } from '../../../core/services/mock-data.service';
         </div>
       }
 
-      <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
+      <div class="grid auto-rows-fr grid-cols-2 items-stretch gap-4" [ngClass]="gridClass()">
         @for (metric of s.metrics; track metric.id) {
           <app-metric-card
             [metric]="metric"
@@ -57,7 +58,11 @@ export class MetricSectionComponent {
     this.mockData.getTrendChartData(this.selectedMetricId() ?? 'profit-loss'),
   );
 
+  readonly gridClass = computed(() =>
+    this.section().metrics.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-5',
+  );
+
   onMetricSelect(metricId: string): void {
-    this.selectedMetricId.set(metricId);
+    this.selectedMetricId.update(current => (current === metricId ? null : metricId));
   }
 }

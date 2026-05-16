@@ -119,10 +119,6 @@ export class TrendChartComponent implements AfterViewInit, OnDestroy {
 
     this.chart?.destroy();
 
-    const gradient = ctx.createLinearGradient(0, 0, 0, 256);
-    gradient.addColorStop(0, 'rgba(239, 68, 68, 0.2)');
-    gradient.addColorStop(1, 'rgba(239, 68, 68, 0.02)');
-
     const gridColor =
       document.documentElement.getAttribute('data-theme') === 'studio-dark'
         ? 'rgba(255,255,255,0.08)'
@@ -141,8 +137,8 @@ export class TrendChartComponent implements AfterViewInit, OnDestroy {
             label: d.title,
             data: d.dataPoints.map(p => p.value),
             borderColor: '#ef4444',
-            backgroundColor: gradient,
-            fill: true,
+            backgroundColor: 'transparent',
+            fill: false,
             tension: 0.4,
             pointRadius: 3,
             pointBackgroundColor: '#ef4444',

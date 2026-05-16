@@ -2,43 +2,66 @@ import { Component, ChangeDetectionStrategy, input, computed } from '@angular/co
 import { MetricStatus } from '../../../core/models';
 import { STATUS_COLORS } from '../../../core/constants/theme.constants';
 
+/** Three solid outer slices (red / yellow / green) with small gaps between. */
+const OUTER_SEGMENTS = [
+  { start: 152, end: 226, color: '#ef4444' },
+  { start: 234, end: 306, color: '#eab308' },
+  { start: 314, end: 388, color: '#22c55e' },
+] as const;
+
 @Component({
   selector: 'app-gauge-chart',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <svg [attr.viewBox]="'0 0 200 140'" class="w-full">
-      <!-- Background arc -->
+    <svg viewBox="0 0 200 130" class="w-full" aria-hidden="true">
+      <!-- Outer scale: 3 solid slices (not dashed) -->
+      @for (seg of outerSegments; track seg.start) {
+        <path
+          [attr.d]="arcPath(outerRadius, seg.start, seg.end)"
+          fill="none"
+          [attr.stroke]="seg.color"
+          stroke-width="5"
+          stroke-linecap="round"
+        />
+      }
+
+      <!-- Inner track (thicker, gray) -->
       <path
-        [attr.d]="bgArc()"
+        [attr.d]="arcPath(innerRadius, startAngle, endAngle)"
         fill="none"
-        class="stroke-base-300"
-        stroke-width="18"
+        stroke="#d1d5db"
+        stroke-width="16"
         stroke-linecap="round"
       />
-      <!-- Foreground arc -->
+
+      <!-- Inner progress -->
       <path
-        [attr.d]="fgArc()"
+        [attr.d]="progressArc()"
         fill="none"
         [attr.stroke]="arcColor()"
-        stroke-width="18"
+        stroke-width="16"
         stroke-linecap="round"
       />
-      <!-- Display value -->
+
       <text
         x="100"
-        y="110"
+        y="98"
         text-anchor="middle"
-        class="fill-base-content text-2xl font-bold"
-        style="font-size: 28px; font-weight: 700;"
+        [attr.fill]="arcColor()"
+        style="font-size: 26px; font-weight: 700"
       >
         {{ displayValue() }}
       </text>
     </svg>
   `,
-  styles: [`
-    :host { display: block; }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class GaugeChartComponent {
   readonly value = input.required<number>();
@@ -46,15 +69,25 @@ export class GaugeChartComponent {
   readonly status = input.required<MetricStatus>();
   readonly displayValue = input.required<string>();
 
+  readonly outerSegments = OUTER_SEGMENTS;
+  readonly startAngle = 150;
+  readonly endAngle = 390;
+  readonly innerRadius = 68;
+  readonly outerRadius = 82;
+  readonly centerX = 100;
+  readonly centerY = 88;
+
   readonly arcColor = computed(() => STATUS_COLORS[this.status()].fill);
 
-  readonly bgArc = computed(() => this.describeArc(100, 90, 72, 150, 390));
-
-  readonly fgArc = computed(() => {
+  readonly progressArc = computed(() => {
     const ratio = Math.min(Math.max(Math.abs(this.value()) / this.maxValue(), 0), 1);
-    const endAngle = 150 + ratio * 240;
-    return this.describeArc(100, 90, 72, 150, endAngle);
+    const progressEnd = this.startAngle + ratio * (this.endAngle - this.startAngle);
+    return this.describeArc(this.centerX, this.centerY, this.innerRadius, this.startAngle, progressEnd);
   });
+
+  arcPath(radius: number, start: number, end: number): string {
+    return this.describeArc(this.centerX, this.centerY, radius, start, end);
+  }
 
   private polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
     const rad = ((angleDeg - 90) * Math.PI) / 180;
