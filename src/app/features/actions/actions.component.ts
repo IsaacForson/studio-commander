@@ -4,10 +4,10 @@ import { ActionSortDirection } from '../../core/models';
 import { ActionCardComponent } from './components/action-card.component';
 
 const toolbarBtnClass =
-  'inline-flex h-[45px] items-center gap-2 rounded-lg border border-[#B6B6B6] bg-transparent px-4 text-sm font-medium text-base-content transition-colors hover:bg-black/5';
+  'inline-flex h-[43px] items-center gap-2 rounded-lg border border-[#B6B6B6] bg-transparent px-4 text-sm font-medium text-base-content transition-colors hover:bg-black/5';
 
 const toolbarSelectClass =
-  'h-[45px] rounded-lg border border-[#B6B6B6] bg-transparent px-4 pr-10 text-sm font-medium text-base-content outline-none';
+  'h-[43px] w-full appearance-none rounded-lg border border-[#B6B6B6] bg-transparent pl-4 pr-10 text-sm font-medium text-base-content outline-none';
 
 @Component({
   selector: 'app-actions',
@@ -15,7 +15,7 @@ const toolbarSelectClass =
   imports: [ActionCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="rounded-2xl border border-base-300/60 bg-white p-5 shadow-figma-drop lg:p-6">
+    <div class="rounded-2xl border border-base-300/60 bg-white px-5 pb-40 pt-5 shadow-figma-drop lg:px-6 lg:pb-44 lg:pt-6">
       <!-- Toolbar -->
       <div class="mb-6 flex flex-wrap items-center gap-3">
         <button type="button" [class]="toolbarBtnClass" (click)="filtersVisible.set(!filtersVisible())">
@@ -40,11 +40,21 @@ const toolbarSelectClass =
           </svg>
           Refresh
         </button>
-        <div class="ml-auto">
+        <div class="relative ml-auto min-w-[280px]">
           <select [class]="toolbarSelectClass" (change)="toggleSort()">
             <option value="desc">Sort by: Date - Latest to Oldest</option>
             <option value="asc">Sort by: Date - Oldest to Latest</option>
           </select>
+          <svg
+            class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-base-content/60"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
 
