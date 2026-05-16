@@ -28,25 +28,31 @@ const CTA_VARIANT_MAP: Record<MetricStatus, 'danger' | 'warning' | 'primary'> = 
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <button type="button" [class]="cardClasses()" (click)="select.emit(metric().id)">
-      <h3 class="shrink-0 text-center text-sm font-semibold text-base-content">{{ metric().title }}</h3>
+      <h3
+        class="flex min-h-[42px] shrink-0 items-center justify-center px-1 text-center text-sm font-semibold leading-snug text-base-content line-clamp-2"
+      >
+        {{ metric().title }}
+      </h3>
 
-      <div class="flex min-h-0 flex-1 items-center justify-center py-2">
+      <div class="flex h-[180px] shrink-0 items-end justify-center">
         <app-gauge-chart
           [value]="metric().value"
           [maxValue]="metric().maxValue"
           [status]="metric().status"
           [displayValue]="metric().displayValue"
-          class="w-full max-w-[168px]"
+          class="h-[172px] w-full max-w-[220px]"
         />
       </div>
 
-      <div class="mt-auto flex w-full flex-col items-center gap-2 pt-1">
+      <div class="mt-auto flex w-full flex-col items-center gap-2 pt-2">
         <span class="inline-block rounded-full px-3 py-1 text-center text-xs font-medium" [class]="pillClass()">
           {{ metric().description }}
         </span>
 
         @if (metric().ctaLabel) {
           <app-action-button [label]="metric().ctaLabel!" [variant]="ctaVariant()" />
+        } @else {
+          <div class="h-10" aria-hidden="true"></div>
         }
       </div>
     </button>
@@ -55,7 +61,7 @@ const CTA_VARIANT_MAP: Record<MetricStatus, 'danger' | 'warning' | 'primary'> = 
     `
       :host {
         display: flex;
-        min-height: 300px;
+        min-height: 360px;
         height: 100%;
       }
     `,
