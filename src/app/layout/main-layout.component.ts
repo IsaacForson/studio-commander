@@ -21,8 +21,10 @@ import { MockDataService } from '../core/services/mock-data.service';
       <main class="flex-1 bg-base-200">
         <router-outlet />
       </main>
-      <app-info-banner [message]="infoBanner.message" />
-      <app-footer />
+      <section class="mt-auto w-full">
+        <app-info-banner [message]="infoBanner.message" />
+        <app-footer />
+      </section>
     </div>
   `,
   styles: [`
