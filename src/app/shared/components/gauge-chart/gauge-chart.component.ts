@@ -46,8 +46,9 @@ const OUTER_SEGMENTS = [
 
       <text
         x="100"
-        y="100"
+        y="108"
         text-anchor="middle"
+        dominant-baseline="central"
         [attr.fill]="arcColor()"
         style="font-size: 30px; font-weight: 700"
       >

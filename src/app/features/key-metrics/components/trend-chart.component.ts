@@ -21,17 +21,27 @@ Chart.register(...registerables);
     @let d = data();
     <div class="rounded-xl border border-base-300/80 bg-base-100 p-5 lg:p-6">
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <h3 class="text-lg font-bold text-base-content">{{ d.title }}</h3>
+        <div class="flex items-center gap-3">
+          <h3 class="text-lg font-bold text-base-content">{{ d.title }}</h3>
 
-        <div class="flex flex-wrap items-center gap-3">
           <div class="relative">
             <select
-              class="border-toolbar h-[45px] appearance-none rounded-lg border bg-transparent pl-4 pr-10 text-sm font-medium text-base-content outline-none"
+              class="border-toolbar appearance-none rounded-lg border bg-transparent py-2 pl-9 pr-8 text-sm font-medium text-base-content outline-none"
             >
               <option>{{ d.dateRange }}</option>
             </select>
             <svg
-              class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-base-content/60"
+              class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-base-content/60"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <svg
+              class="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-base-content/60"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -41,15 +51,15 @@ Chart.register(...registerables);
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
-
-          <button
-            type="button"
-            class="inline-flex h-[45px] items-center gap-2 rounded-lg bg-amber-500 px-4 text-sm font-semibold text-white hover:bg-amber-600"
-          >
-            <span>✦</span>
-            Trend Analysis
-          </button>
         </div>
+
+        <button
+          type="button"
+          class="inline-flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-600"
+        >
+          <span>✦</span>
+          Trend Analysis
+        </button>
       </div>
 
       <div class="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
