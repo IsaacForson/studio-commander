@@ -41,29 +41,32 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
 
       <!-- Intelligence Panels -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <app-kpi-intelligence [data]="kpiData" />
-        <app-marketing-intelligence [data]="marketingData" />
-      </div>
+        <div class="space-y-6">
+          <app-kpi-intelligence [data]="kpiData" />
 
-      <!-- Tomorrow Morning -->
-      <div class="bg-base-100 border border-base-300 rounded-2xl p-5">
-        <div class="flex items-center gap-3 mb-3">
-          <h3 class="text-sm font-semibold text-amber-500 flex items-center gap-2 whitespace-nowrap">
-            <span>✦</span> Tomorrow morning
-          </h3>
-          <div class="flex-1 h-px bg-amber-300/30"></div>
+          <!-- Tomorrow morning + Want Symon (single card, no gap) -->
+          <div class="bg-red-50/50 border border-base-300 rounded-2xl overflow-hidden">
+            <div class="p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <h3 class="text-sm font-semibold text-amber-500 flex items-center gap-2 whitespace-nowrap">
+                  <span>☀️</span> Tomorrow morning
+                </h3>
+                <div class="flex-1 h-px bg-amber-400/30"></div>
+              </div>
+              <p class="text-sm text-base-content/80 leading-relaxed">
+                Symon will have the full re-engagement response data ready — who responded, who may benefit
+                from a personal call, and an updated view of your billing opportunity. Sera will have Day 3 ready when
+                you approve it.
+              </p>
+            </div>
+            <div class="bg-amber-500 text-white px-5 py-3.5 flex items-center gap-2">
+              <span>✦</span>
+              <span class="text-sm font-medium">Want Symon to do something else?</span>
+            </div>
+          </div>
         </div>
-        <p class="text-sm text-base-content/80 leading-relaxed">
-          Symon will have the full re-engagement response data ready — who responded, who may benefit
-          from a personal call, and an updated view of your billing opportunity. Sera will have Day 3 ready when
-          you approve it.
-        </p>
-      </div>
 
-      <!-- Want Symon to do something -->
-      <div class="bg-amber-500 text-white rounded-2xl px-5 py-3.5 flex items-center gap-3">
-        <span>✦</span>
-        <span class="text-sm font-medium">Want Symon to do something else?</span>
+        <app-marketing-intelligence [data]="marketingData" />
       </div>
     </div>
   `,
