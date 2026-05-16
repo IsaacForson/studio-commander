@@ -42,7 +42,7 @@ export class MockDataService {
   getMetricSections(): MetricSection[] {
     return [
       {
-        title: 'Financial Health',
+        title: '',
         counts: { total: 4, critical: 2, warning: 1, normal: 1 },
         metrics: [
           {
@@ -197,14 +197,46 @@ export class MockDataService {
     ];
   }
 
-  getTrendChartData(): TrendChartData {
+  getTrendChartData(metricId = 'profit-loss'): TrendChartData {
+    const titles: Record<string, string> = {
+      'profit-loss': 'Profit / Loss',
+      'total-revenue': 'Total Revenue',
+      'occupancy-cost': 'Occupancy Cost Ratio',
+      'payroll-cost': 'Payroll Cost Ratio',
+      'certified-leaders': 'Age 16+ Certified Leaders',
+      'member-attendance': 'Eligible Member Attendance',
+      'dva-score': 'DVA Score',
+      'aloa-score': 'ALOA Score',
+      'community-partners': 'Community Network Partners',
+      'num-members': '# of Members',
+      'package-status': 'Member Package Status',
+      'num-accounts': '# of Accounts',
+      'leads-source': 'Leads by Source',
+      'training-compliance': 'Training Compliance',
+    };
+
     return {
-      title: 'Profit / Loss',
+      title: titles[metricId] ?? 'Metric Trend',
       dateRange: 'Jan 2025 – Dec 2025',
       stats: [
-        { label: 'Current Value', value: '-$1.2K', change: '9.5x (53%)', changeDirection: 'down' },
-        { label: 'Highest Value', value: '$0.82K', change: '$0.3k', changeDirection: 'down' },
-        { label: 'Lowest Value', value: '-$1.2K', change: '$0.3k', changeDirection: 'down' },
+        {
+          label: 'Current Value',
+          value: '-$1.2K',
+          change: '0.5k (50%) since last period',
+          changeDirection: 'down',
+        },
+        {
+          label: 'Highest Value',
+          value: '$0.82K',
+          change: '$0.3k since last period',
+          changeDirection: 'down',
+        },
+        {
+          label: 'Lowest Value',
+          value: '-$1.2K',
+          change: '$0.3k since last period',
+          changeDirection: 'down',
+        },
       ],
       dataPoints: [
         { label: 'Jan', value: -800 },
