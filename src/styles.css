@@ -77,6 +77,14 @@
   box-shadow: 0 4px 11.9px 0 rgb(0 0 0 / 35%);
 }
 
+@utility shadow-figma-soft {
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 4%);
+}
+
+[data-theme='studio-dark'] .shadow-figma-soft {
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+}
+
 @layer components {
   .bg-surface-elevated {
     background-color: #ffffff;
