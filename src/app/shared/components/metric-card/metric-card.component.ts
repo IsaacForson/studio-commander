@@ -9,6 +9,12 @@ const BORDER_MAP: Record<MetricStatus, string> = {
   normal: 'border-[#16a34a]',
 };
 
+const BOTTOM_BORDER_MAP: Record<MetricStatus, string> = {
+  critical: 'border-b-[#dc2626]',
+  warning: 'border-b-[#f59e0b]',
+  normal: 'border-b-[#16a34a]',
+};
+
 const PILL_MAP: Record<MetricStatus, string> = {
   critical: 'metric-pill-critical',
   warning: 'metric-pill-warning',
@@ -75,12 +81,12 @@ export class MetricCardComponent {
   readonly cardClasses = computed(() => {
     const m = this.metric();
     const classes = [
-      'flex h-full w-full flex-col rounded-xl border-2 p-4 text-left shadow-figma-drop transition-shadow hover:shadow-md',
+      'flex h-full w-full flex-col rounded-xl border-2 p-4 text-left shadow-figma-drop transition-shadow hover:shadow-md outline-none',
       BORDER_MAP[m.status],
       'bg-surface-card',
     ];
     if (this.selected()) {
-      classes.push('ring-2 ring-primary/40 ring-offset-2 ring-offset-base-200');
+      classes.push('border-b-[5px]', BOTTOM_BORDER_MAP[m.status]);
     }
     return classes.join(' ');
   });
