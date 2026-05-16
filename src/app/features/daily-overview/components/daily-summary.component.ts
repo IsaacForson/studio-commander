@@ -87,14 +87,16 @@ import { DailySummary } from '../../../core/models';
           </div>
 
           <div class="min-w-0">
-            <h4 class="font-bold text-lg text-amber-400 mb-2">Studio Health Score</h4>
-            <p class="text-sm flex items-center gap-2 mb-1.5 text-white/90">
-              <span class="text-base">🔥</span>
+            <h4 class="font-semibold leading-tight mb-2 text-amber-400" style="font-size: 24px">
+              Studio Health Score
+            </h4>
+            <p class="flex items-center gap-2 mb-1.5 text-white/90 leading-snug" style="font-size: 16px">
+              <span>🔥</span>
               {{ s.healthStreak }}
             </p>
-            <p class="text-sm flex items-center gap-2 text-green-400">
+            <p class="flex items-center gap-2 text-green-400 leading-snug" style="font-size: 16px">
               <span
-                class="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-green-500 text-[10px] text-white"
+                class="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-green-500 text-[10px] text-white"
               >▲</span>
               {{ s.healthChange }}
             </p>
@@ -103,12 +105,12 @@ import { DailySummary } from '../../../core/models';
 
         <!-- Network Top Studios inset -->
         <div
-          class="m-3 ml-0 flex min-w-[140px] flex-col items-center justify-center rounded-xl border border-white/30 px-4 py-4 text-center text-white"
+          class="my-3 mr-3 ml-0 shrink-0 self-center flex flex-col items-center justify-center rounded-xl border border-white/30 px-4 py-3 text-center text-white"
           style="background: rgba(0, 0, 0, 0.2)"
         >
-          <p class="text-xs text-purple-200/80 mb-1">Network Top Studios</p>
-          <span class="text-5xl font-bold leading-none">{{ s.retentionScore }}</span>
-          <p class="text-sm mt-2 font-medium text-pink-400">Your gap: 14 pts</p>
+          <p class="text-purple-200/80 leading-tight" style="font-size: 14px">Network Top Studios</p>
+          <span class="font-bold leading-none my-0.5" style="font-size: 48px">{{ s.retentionScore }}</span>
+          <p class="font-medium text-pink-400 leading-tight" style="font-size: 14px">Your gap: 14 pts</p>
         </div>
       </div>
     </div>

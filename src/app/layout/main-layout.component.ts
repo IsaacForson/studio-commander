@@ -16,9 +16,9 @@ import { MockDataService } from '../core/services/mock-data.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="min-h-screen flex flex-col bg-base-100">
+    <div class="flex min-h-screen flex-col bg-base-200">
       <app-header />
-      <main class="flex-1">
+      <main class="flex-1 bg-base-200">
         <router-outlet />
       </main>
       <app-info-banner [message]="infoBanner.message" />

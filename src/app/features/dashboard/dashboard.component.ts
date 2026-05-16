@@ -8,9 +8,9 @@ import { TabNavigationComponent } from '../../shared/components/tab-navigation/t
   imports: [RouterOutlet, TabNavigationComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="px-6 lg:px-10 py-4">
+    <div class="px-6 py-5 lg:px-10">
       <app-tab-navigation />
-      <div class="mt-4">
+      <div class="mt-5">
         <router-outlet />
       </div>
     </div>
