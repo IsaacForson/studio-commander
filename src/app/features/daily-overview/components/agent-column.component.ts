@@ -56,15 +56,15 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
               >
                 <div class="flex items-start gap-2.5">
                   @if (task.status === 'completed') {
-                    <span class="text-lg mt-0.5 shrink-0">✅</span>
+                    <span class="text-sm shrink-0 leading-snug">✅</span>
                   } @else if (task.statusVariant === 'error') {
-                    <span class="text-lg mt-0.5 shrink-0">🔺</span>
+                    <span class="text-sm shrink-0 leading-snug">🔺</span>
                   } @else if (task.statusVariant === 'warning') {
-                    <span class="text-lg mt-0.5 shrink-0">⚠️</span>
+                    <span class="text-sm shrink-0 leading-snug">⚠️</span>
                   } @else if (task.hasAiIcon) {
-                    <span class="text-lg mt-0.5 shrink-0">✉️</span>
+                    <span class="text-sm shrink-0 leading-snug">✉️</span>
                   } @else {
-                    <span class="text-base-content/30 text-lg mt-0.5 shrink-0">●</span>
+                    <span class="text-base-content/30 text-sm shrink-0 leading-snug">●</span>
                   }
 
                   <div class="flex-1 min-w-0">
