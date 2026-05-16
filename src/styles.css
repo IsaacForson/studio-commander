@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "studio-light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(96.5% 0.005 260);
+  --color-base-300: oklch(92% 0.005 260);
+  --color-base-content: oklch(20% 0.02 260);
+  --color-primary: oklch(55% 0.25 260);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(65% 0.15 50);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(70% 0.15 160);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(30% 0.02 260);
+  --color-neutral-content: oklch(95% 0 0);
+  --color-error: oklch(55% 0.25 25);
+  --color-error-content: oklch(100% 0 0);
+  --color-warning: oklch(75% 0.18 75);
+  --color-warning-content: oklch(20% 0 0);
+  --color-success: oklch(60% 0.2 145);
+  --color-success-content: oklch(100% 0 0);
+  --color-info: oklch(65% 0.2 240);
+  --color-info-content: oklch(100% 0 0);
+  --radius-btn: 0.5rem;
+  --radius-box: 0.75rem;
+}
+
+@plugin "daisyui/theme" {
+  name: "studio-dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: oklch(25% 0.04 270);
+  --color-base-200: oklch(22% 0.04 270);
+  --color-base-300: oklch(19% 0.04 270);
+  --color-base-content: oklch(95% 0 0);
+  --color-primary: oklch(65% 0.25 260);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(70% 0.15 50);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(70% 0.15 160);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(35% 0.03 270);
+  --color-neutral-content: oklch(95% 0 0);
+  --color-error: oklch(60% 0.25 25);
+  --color-error-content: oklch(100% 0 0);
+  --color-warning: oklch(75% 0.18 75);
+  --color-warning-content: oklch(20% 0 0);
+  --color-success: oklch(65% 0.2 145);
+  --color-success-content: oklch(100% 0 0);
+  --color-info: oklch(65% 0.2 240);
+  --color-info-content: oklch(100% 0 0);
+  --radius-btn: 0.5rem;
+  --radius-box: 0.75rem;
+}
+
+@theme {
+  --color-status-critical: #dc2626;
+  --color-status-warning: #f59e0b;
+  --color-status-normal: #16a34a;
+  --color-status-critical-bg: #fef2f2;
+  --color-status-warning-bg: #fffbeb;
+  --color-status-normal-bg: #f0fdf4;
+  --color-navy: #1e1b4b;
+  --color-navy-light: #2d2a5e;
+  --color-navy-card: #252360;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
