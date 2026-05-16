@@ -7,7 +7,7 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
   template: `
     <div class="w-full px-6 pt-8 lg:px-10">
       <div
-        class="bg-info-banner border-surface flex w-full justify-center rounded-xl border px-6 py-5 lg:px-10"
+        class="animate-fade-in-up bg-info-banner border-surface flex w-full justify-center rounded-xl border px-6 py-5 lg:px-10"
       >
         <div class="flex max-w-4xl items-start gap-2">
           <svg

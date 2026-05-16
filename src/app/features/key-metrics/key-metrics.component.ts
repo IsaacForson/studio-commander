@@ -10,7 +10,7 @@ import { MetricSectionComponent } from './components/metric-section.component';
   template: `
     <div class="space-y-6 pb-6">
       @for (section of sections; track $index) {
-        <app-metric-section [section]="section" />
+        <app-metric-section [section]="section" class="animate-fade-in-up animate-stagger" [style.--stagger-index]="$index" />
       }
     </div>
   `,

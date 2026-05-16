@@ -15,7 +15,7 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <button
-      class="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+      class="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-all active:scale-95"
       [class]="variantClass()"
       (click)="clicked.emit()"
     >

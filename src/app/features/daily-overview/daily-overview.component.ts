@@ -18,7 +18,7 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
   template: `
     <div class="space-y-6">
       <!-- Daily Summary Section -->
-      <div>
+      <div class="animate-fade-in-up" style="--stagger-index: 0">
         <div class="flex items-center gap-3 mb-3">
           <p class="text-xs text-base-content/40 tracking-wide whitespace-nowrap">Daily Summary</p>
           <div class="flex-1 h-px bg-base-300"></div>
@@ -27,25 +27,25 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
       </div>
 
       <!-- Daily Operations Section -->
-      <div>
+      <div class="animate-fade-in-up" style="--stagger-index: 1">
         <div class="flex items-center gap-3 mb-3">
           <p class="text-xs text-base-content/40 tracking-wide whitespace-nowrap">Daily Operations</p>
           <div class="flex-1 h-px bg-base-300"></div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           @for (agent of agents; track agent.name) {
-            <app-agent-column [agent]="agent" />
+            <app-agent-column [agent]="agent" class="animate-fade-in-up animate-stagger" [style.--stagger-index]="$index + 2" />
           }
         </div>
       </div>
 
       <!-- Intelligence Panels -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="animate-fade-in-up animate-stagger grid grid-cols-1 lg:grid-cols-2 gap-6" style="--stagger-index: 4">
         <div class="space-y-6">
-          <app-kpi-intelligence [data]="kpiData" />
+          <app-kpi-intelligence [data]="kpiData" class="animate-fade-in-up animate-stagger" style="--stagger-index: 5" />
 
           <!-- Tomorrow morning + Want Symon (single card, no gap) -->
-          <div class="bg-red-50/50 border border-base-300 rounded-2xl overflow-hidden">
+          <div class="animate-fade-in-up animate-stagger bg-red-50/50 border border-base-300 rounded-2xl overflow-hidden" style="--stagger-index: 6">
             <div class="p-5">
               <div class="flex items-center gap-3 mb-3">
                 <h3 class="text-sm font-semibold text-amber-500 flex items-center gap-2 whitespace-nowrap">
@@ -66,7 +66,7 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
           </div>
         </div>
 
-        <app-marketing-intelligence [data]="marketingData" />
+        <app-marketing-intelligence [data]="marketingData" class="animate-fade-in-up animate-stagger" style="--stagger-index: 5" />
       </div>
     </div>
   `,

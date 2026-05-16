@@ -10,7 +10,7 @@ import { DailySummary } from '../../../core/models';
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <!-- Win - Overnight -->
       <div
-        class="rounded-2xl p-5 flex items-center gap-4 text-white border-2 border-[#18631D]"
+        class="animate-fade-in-up rounded-2xl p-5 flex items-center gap-4 text-white border-2 border-[#18631D]"
         style="background: linear-gradient(90deg, #1A291B 0%, #18631D 100%)"
       >
         <!-- Trophy -->
@@ -66,7 +66,8 @@ import { DailySummary } from '../../../core/models';
 
       <!-- Studio Health Score + Network Top Studios -->
       <div
-        class="rounded-2xl overflow-hidden flex border-2 border-indigo-900"
+        class="animate-fade-in-up animate-stagger rounded-2xl overflow-hidden flex border-2 border-indigo-900"
+        style="--stagger-index: 1"
         style="background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)"
       >
         <div class="flex-1 p-5 flex items-center gap-4 text-white">

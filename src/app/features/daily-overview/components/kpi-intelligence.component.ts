@@ -54,7 +54,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
             </div>
           </button>
           @if (openAccordion() === 'revenue') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <p class="text-sm text-base-content/70 leading-relaxed mt-3 mb-3">
                 Monthly recurring revenue is currently $14.8k against an RRR target of $18k. The gap is primarily driven by 34 expired member packages that have not been renewed, representing $5,100 in recoverable billing.
               </p>
@@ -92,7 +92,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
             </div>
           </button>
           @if (openAccordion() === 'dva') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <p class="text-sm text-base-content/70 leading-relaxed mt-3 mb-3">
                 DVA (Drop vs Add) Score measures student retention health. 12 students dropped this month while only 3 new students joined, creating a net loss of 9 members. The critical threshold is 75%.
               </p>
@@ -131,7 +131,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
           </button>
 
           @if (openAccordion() === 'expired') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <h4 class="text-sm font-bold text-base-content mt-3 mb-1">34 Expired Packages — Recoverable Billing</h4>
               <p class="text-sm text-base-content/70 leading-relaxed mb-4">
                 <span class="text-amber-600 font-semibold">Symon</span> identified 34 member accounts with expired packages this morning. These are members who were active but have not renewed. They already know your studio — re-enrollment is significantly easier than new acquisition. <span class="text-teal-600 font-semibold">Sera</span> has a 3-step personal outreach sequence ready to launch with your approval.

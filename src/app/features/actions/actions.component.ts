@@ -16,7 +16,7 @@ const toolbarSelectClass =
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
-      class="bg-surface-elevated rounded-2xl border border-base-300/60 px-5 pb-40 pt-5 shadow-figma-drop lg:px-6 lg:pb-44 lg:pt-6"
+      class="animate-fade-in-up bg-surface-elevated rounded-2xl border border-base-300/60 px-5 pb-40 pt-5 shadow-figma-drop lg:px-6 lg:pb-44 lg:pt-6"
     >
       <!-- Toolbar -->
       <div class="mb-6 flex flex-wrap items-center gap-3">
@@ -63,7 +63,7 @@ const toolbarSelectClass =
       <!-- Action Cards -->
       <div class="space-y-4">
         @for (action of sortedActions(); track action.id) {
-          <app-action-card [action]="action" />
+          <app-action-card [action]="action" class="animate-fade-in-up animate-stagger" [style.--stagger-index]="$index" />
         }
       </div>
     </div>

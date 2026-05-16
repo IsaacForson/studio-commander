@@ -31,12 +31,14 @@ import { MockDataService } from '../../../core/services/mock-data.service';
             [metric]="metric"
             [selected]="selectedMetricId() === metric.id"
             (select)="onMetricSelect($event)"
+            class="animate-fade-in-up animate-stagger"
+            [style.--stagger-index]="$index"
           />
         }
       </div>
 
       @if (selectedMetricId()) {
-        <app-trend-chart class="mt-4 block" [data]="trendData()" />
+        <app-trend-chart class="mt-4 block animate-scale-in" [data]="trendData()" />
       }
     </section>
   `,

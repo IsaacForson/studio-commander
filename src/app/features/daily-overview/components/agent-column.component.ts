@@ -51,7 +51,8 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
           <div class="space-y-3">
             @for (task of section.tasks; track task.title) {
               <div
-                class="bg-base-100 rounded-xl p-4 border-2"
+                class="animate-fade-in-up animate-stagger bg-base-100 rounded-xl p-4 border-2"
+                [style.--stagger-index]="$index"
                 [class]="task.statusVariant === 'error' ? 'border-red-400' : task.statusVariant === 'warning' ? 'border-amber-400' : 'border-base-300'"
               >
                 <div class="flex items-start gap-2.5">

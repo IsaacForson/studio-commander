@@ -66,7 +66,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
           </button>
 
           @if (openAccordion() === 'reengagement') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <p class="text-xs text-base-content/60 my-3 leading-relaxed">Personal outreach to all 34 expired members. Day 1 from instructor, Day 3 return offer, Day 7 community update.</p>
               <div class="grid grid-cols-4 gap-2 mb-4">
                 <div class="border border-base-300 rounded-lg p-2.5">
@@ -109,7 +109,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
             </div>
           </button>
           @if (openAccordion() === 'trial') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <p class="text-xs text-base-content/60 my-3 leading-relaxed">Free trial class campaign targeting new leads in the Santa Monica area through Instagram ads and Google local search. Walk-ins and online bookings are tracked automatically.</p>
               <div class="grid grid-cols-4 gap-2 mb-4">
                 <div class="border border-base-300 rounded-lg p-2.5">
@@ -150,7 +150,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
             </div>
           </button>
           @if (openAccordion() === 'referral') {
-            <div class="px-4 pb-4 border-t border-base-300">
+            <div class="px-4 pb-4 border-t border-base-300 animate-slide-down">
               <p class="text-xs text-base-content/60 my-3 leading-relaxed">Referral program announcement goes out to all 187 active members tomorrow at 09:00AM. Each successful referral that results in enrollment earns a $50 studio credit for the referring member.</p>
               <div class="grid grid-cols-3 gap-2 mb-4">
                 <div class="border border-base-300 rounded-lg p-2.5">
