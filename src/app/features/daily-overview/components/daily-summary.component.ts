@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, signal, afterNextRender } from '@angular/core';
 import { DailySummary } from '../../../core/models';
 
 @Component({
@@ -45,7 +45,7 @@ import { DailySummary } from '../../../core/models';
 
         <!-- Amount + trend (stacked) -->
         <div class="shrink-0 flex flex-col items-end">
-          <span class="text-4xl font-bold leading-none" style="color: #AAFF85">{{ s.winAmount }}</span>
+          <span class="text-4xl font-bold leading-none" style="color: #AAFF85">{{ animatedWinAmount() }}</span>
           <div
             class="mt-2 flex items-center gap-1.5 text-sm font-medium text-white"
           >
@@ -67,8 +67,7 @@ import { DailySummary } from '../../../core/models';
       <!-- Studio Health Score + Network Top Studios -->
       <div
         class="animate-fade-in-up animate-stagger rounded-2xl overflow-hidden flex border-2 border-indigo-900"
-        style="--stagger-index: 1"
-        style="background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)"
+        style="--stagger-index: 1; background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)"
       >
         <div class="flex-1 p-5 flex items-center gap-4 text-white">
           <!-- Gauge -->
@@ -85,7 +84,7 @@ import { DailySummary } from '../../../core/models';
                 fill="none"
                 stroke="#fbbf24"
                 stroke-width="2.5"
-                [attr.stroke-dasharray]="s.healthScore + ', 100'"
+                [attr.stroke-dasharray]="animatedHealthScore() + ', 100'"
                 stroke-linecap="round"
               />
             </svg>
@@ -93,7 +92,7 @@ import { DailySummary } from '../../../core/models';
               class="absolute inset-0 flex items-center justify-center font-bold text-amber-400"
               style="font-size: 28px"
             >
-              {{ s.healthScore }}
+              {{ animatedHealthScore() }}
             </span>
           </div>
 
@@ -127,7 +126,7 @@ import { DailySummary } from '../../../core/models';
           style="background: rgba(0, 0, 0, 0.2)"
         >
           <p class="text-purple-200/80 leading-tight" style="font-size: 14px">Network Top Studios</p>
-          <span class="font-bold leading-none" style="font-size: 48px">{{ s.retentionScore }}</span>
+          <span class="font-bold leading-none" style="font-size: 48px">{{ animatedRetentionScore() }}</span>
           <p class="font-medium text-pink-400 leading-tight" style="font-size: 14px">Your gap: 14 pts</p>
         </div>
       </div>
@@ -137,4 +136,40 @@ import { DailySummary } from '../../../core/models';
 })
 export class DailySummaryComponent {
   readonly summary = input.required<DailySummary>();
+
+  readonly animatedWinAmount = signal('+$0');
+  readonly animatedHealthScore = signal(0);
+  readonly animatedRetentionScore = signal(0);
+
+  constructor() {
+    afterNextRender(() => {
+      const s = this.summary();
+
+      this.countUp(0, s.healthScore, 1200, v => this.animatedHealthScore.set(Math.round(v)));
+      this.countUp(0, s.retentionScore, 1200, v => this.animatedRetentionScore.set(Math.round(v)));
+
+      const numMatch = s.winAmount.match(/[\d,]+/);
+      if (numMatch) {
+        const target = parseInt(numMatch[0].replace(/,/g, ''), 10);
+        const prefix = s.winAmount.substring(0, s.winAmount.indexOf(numMatch[0]));
+        const suffix = s.winAmount.substring(s.winAmount.indexOf(numMatch[0]) + numMatch[0].length);
+        this.countUp(0, target, 1200, v => {
+          this.animatedWinAmount.set(`${prefix}${Math.round(v).toLocaleString()}${suffix}`);
+        });
+      } else {
+        this.animatedWinAmount.set(s.winAmount);
+      }
+    });
+  }
+
+  private countUp(from: number, to: number, duration: number, cb: (v: number) => void): void {
+    const start = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      cb(from + (to - from) * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
 }
