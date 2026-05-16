@@ -22,7 +22,7 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
             clip-rule="evenodd"
           />
         </svg>
-        <p class="flex-1 text-center text-sm leading-relaxed text-[#4D4D4D]">
+        <p class="mx-auto max-w-4xl flex-1 text-center text-sm leading-relaxed text-[#4D4D4D]">
           {{ message() }}
         </p>
       </div>
