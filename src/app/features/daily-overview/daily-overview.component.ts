@@ -32,7 +32,7 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
           <p class="text-xs text-base-content/40 tracking-wide whitespace-nowrap">Daily Operations</p>
           <div class="flex-1 h-px bg-base-300"></div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           @for (agent of agents; track agent.name) {
             <app-agent-column [agent]="agent" class="animate-fade-in-up animate-stagger" [style.--stagger-index]="$index + 2" />
           }
@@ -40,7 +40,7 @@ import { MarketingIntelligenceComponent } from './components/marketing-intellige
       </div>
 
       <!-- Intelligence Panels -->
-      <div class="animate-fade-in-up animate-stagger grid grid-cols-1 lg:grid-cols-2 gap-6" style="--stagger-index: 4">
+      <div class="animate-fade-in-up animate-stagger grid grid-cols-1 lg:grid-cols-2 gap-4" style="--stagger-index: 4">
         <div class="space-y-6">
           <app-kpi-intelligence [data]="kpiData" class="animate-fade-in-up animate-stagger" style="--stagger-index: 5" />
 
