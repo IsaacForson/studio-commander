@@ -66,8 +66,8 @@ import { DailySummary } from '../../../core/models';
 
       <!-- Studio Health Score + Network Top Studios -->
       <div
-        class="animate-fade-in-up animate-stagger rounded-2xl overflow-hidden flex border-2 border-indigo-900"
-        style="--stagger-index: 1; background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)"
+        class="animate-fade-in-up animate-stagger rounded-2xl overflow-hidden flex border-2 border-[#4E4792]"
+        style="--stagger-index: 1; background: linear-gradient(90deg, #17152C 0%, #4E4792 100%)"
       >
         <div class="flex-1 p-5 flex items-center gap-4 text-white">
           <!-- Gauge -->
